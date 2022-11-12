@@ -83,18 +83,18 @@ _task "update system"
 # finish last task
 printf "${OVERWRITE}${LGREEN} [✓]  ${LGREEN}${TASK}\n"
 
-# description
-printf "      ${YELLOW}Do you want to install Go? [Y/n]: ${RESTORE}"
-read prompt && printf "${OVERWRITE}" && if [[ $prompt == "y" || $prompt == "Y" ]]; then
-    _task "update golang"
-        _cmd 'rm -rf /usr/local/go'
-        _cmd 'wget --timeout=5 --tries=2 --quiet -c https://dl.google.com/go/$(curl -s https://golang.org/VERSION?m=text).linux-amd64.tar.gz -O go.tar.gz'
-        _cmd 'tar -C /usr/local -xzf go.tar.gz'
-        _cmd 'echo "export GOROOT=/usr/local/go" >> /etc/profile'
-        _cmd 'echo "export PATH=/usr/local/go/bin:$PATH" >> /etc/profile'
-        _cmd 'source /etc/profile' 
-        _cmd 'rm go.tar.gz'
-fi
+# Uncomment to update Go - description
+#printf "      ${YELLOW}Do you want to install Go? [Y/n]: ${RESTORE}"
+#read prompt && printf "${OVERWRITE}" && if [[ $prompt == "y" || $prompt == "Y" ]]; then
+#    _task "update golang"
+#        _cmd 'rm -rf /usr/local/go'
+#        _cmd 'wget --timeout=5 --tries=2 --quiet -c https://dl.google.com/go/$(curl -s https://golang.org/VERSION?m=text).linux-amd64.tar.gz -O go.tar.gz'
+#        _cmd 'tar -C /usr/local -xzf go.tar.gz'
+#        _cmd 'echo "export GOROOT=/usr/local/go" >> /etc/profile'
+#        _cmd 'echo "export PATH=/usr/local/go/bin:$PATH" >> /etc/profile'
+#        _cmd 'source /etc/profile' 
+#        _cmd 'rm go.tar.gz'
+#fi
 
 # Uncomment to enable nameserver change to cloudflare - description
 #_task "update nameservers"
