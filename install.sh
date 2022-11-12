@@ -75,6 +75,16 @@ if [[ $(id -u) -ne 0 ]] ; then printf "\n${LRED} Please run as root${RESTORE}\n\
 # dependencies
 _task "update dependencies"
     _cmd 'apt-get install wget sed git -y'
+    
+# add net-tools
+_task "install net-tools"
+    _cmd 'apt-get install net-tools -y'
+    
+# add template dependencies
+-task "prep for template"
+    _cmd 'apt-get install ifupdown -y'
+    # create a symbolic link for dhcp
+    _cmd 'ln -s /etc/dhcp /etc/dhcp3'
 
 # description
 _task "update system"
