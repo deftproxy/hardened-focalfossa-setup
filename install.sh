@@ -96,11 +96,11 @@ read prompt && printf "${OVERWRITE}" && if [[ $prompt == "y" || $prompt == "Y" ]
         _cmd 'rm go.tar.gz'
 fi
 
-# description
-_task "update nameservers"
-    _cmd 'truncate -s0 /etc/resolv.conf'
-    _cmd 'echo "nameserver 1.1.1.1" | sudo tee -a /etc/resolv.conf'
-    _cmd 'echo "nameserver 1.0.0.1" | sudo tee -a /etc/resolv.conf'
+# Uncomment to enable nameserver change to cloudflare - description
+#_task "update nameservers"
+#    _cmd 'truncate -s0 /etc/resolv.conf'
+#    _cmd 'echo "nameserver 1.1.1.1" | sudo tee -a /etc/resolv.conf'
+#    _cmd 'echo "nameserver 1.0.0.1" | sudo tee -a /etc/resolv.conf'
 
 # description
 _task "update ntp servers"
@@ -117,15 +117,15 @@ _task "update sysctl.conf"
 _task "update sshd_config"
     _cmd 'wget --timeout=5 --tries=2 --quiet -c https://raw.githubusercontent.com/conduro/ubuntu/main/sshd.conf -O /etc/ssh/sshd_config'
 
-# description
-_task "disable system logging"
-    _cmd 'systemctl stop systemd-journald.service'
-    _cmd 'systemctl disable systemd-journald.service'
-    _cmd 'systemctl mask systemd-journald.service'
+# Uncomment to disable logging - description
+#_task "disable system logging"
+#    _cmd 'systemctl stop systemd-journald.service'
+#    _cmd 'systemctl disable systemd-journald.service'
+#    _cmd 'systemctl mask systemd-journald.service'
 
-    _cmd 'systemctl stop rsyslog.service'
-    _cmd 'systemctl disable rsyslog.service'
-    _cmd 'systemctl mask rsyslog.service'
+#    _cmd 'systemctl stop rsyslog.service'
+#    _cmd 'systemctl disable rsyslog.service'
+#    _cmd 'systemctl mask rsyslog.service'
 
 # description
 _task "disable snapd"
@@ -140,27 +140,30 @@ _task "configure firewall"
     _cmd 'ufw logging off'
     _cmd 'ufw default deny incoming'
     _cmd 'ufw default allow outgoing'
-    _cmd 'ufw allow 80/tcp comment "http"'
-    _cmd 'ufw allow 443/tcp comment "https"'
-    printf "${YELLOW} [?]  specify ssh port [leave empty for 22]: ${RESTORE}"
-    read prompt && printf "${OVERWRITE}" && if [[ $prompt != "" ]]; then
-        _cmd 'ufw allow ${prompt}/tcp comment "ssh"'
-        _cmd 'echo "Port ${prompt}" | sudo tee -a /etc/ssh/sshd_config'
-    else 
+#    _cmd 'ufw allow 80/tcp comment "http"'
+#    _cmd 'ufw allow 443/tcp comment "https"'
+
+# Uncomment following conditional block to prompt for ssh port dialog
+#    printf "${YELLOW} [?]  specify ssh port [leave empty for 22]: ${RESTORE}"
+#    read prompt && printf "${OVERWRITE}" && if [[ $prompt != "" ]]; then
+#        _cmd 'ufw allow ${prompt}/tcp comment "ssh"'
+#        _cmd 'echo "Port ${prompt}" | sudo tee -a /etc/ssh/sshd_config'
+#    else 
         _cmd 'ufw allow 22/tcp comment "ssh"'
-    fi
+#    fi
+
     _cmd 'sed -i "/ipv6=/Id" /etc/default/ufw'
     _cmd 'echo "IPV6=no" | sudo tee -a /etc/default/ufw'
     _cmd 'sed -i "/GRUB_CMDLINE_LINUX_DEFAULT=/Id" /etc/default/grub'
     _cmd 'echo "GRUB_CMDLINE_LINUX_DEFAULT=\"ipv6.disable=1 quiet splash\"" | sudo tee -a /etc/default/grub'
 
 
-# description
-_task "free disk space"
-    _cmd 'find /var/log -type f -delete'
-    _cmd 'rm -rf /usr/share/man/*'
-    _cmd 'apt-get autoremove -y'
-    _cmd 'apt-get autoclean -y'
+# Uncomment to free disk space - description
+#_task "free disk space"
+#    _cmd 'find /var/log -type f -delete'
+#    _cmd 'rm -rf /usr/share/man/*'
+#    _cmd 'apt-get autoremove -y'
+#    _cmd 'apt-get autoclean -y'
     # _cmd "purge" 'apt-get remove --purge -y'
     # _cmd "clean" 'apt-get clean && sudo apt-get --purge autoremove -y'
 
