@@ -111,11 +111,11 @@ _task "update ntp servers"
 
 # description
 _task "update sysctl.conf"
-    _cmd 'wget --timeout=5 --tries=2 --quiet -c https://raw.githubusercontent.com/conduro/ubuntu/main/sysctl.conf -O /etc/sysctl.conf'
+    _cmd 'wget --timeout=5 --tries=2 --quiet -c https://raw.githubusercontent.com/deftproxy/FocalFossaHardening/main/sysctl.conf -O /etc/sysctl.conf'
 
 # description
 _task "update sshd_config"
-    _cmd 'wget --timeout=5 --tries=2 --quiet -c https://raw.githubusercontent.com/conduro/ubuntu/main/sshd.conf -O /etc/ssh/sshd_config'
+    _cmd 'wget --timeout=5 --tries=2 --quiet -c https://raw.githubusercontent.com/deftproxy/FocalFossaHardening/main/sshd.conf -O /etc/ssh/sshd_config'
 
 # Uncomment to disable logging - description
 #_task "disable system logging"
