@@ -84,7 +84,8 @@ _task "install net-tools"
 _task "prep for template"
     _cmd 'apt-get install ifupdown -y'
     # create a symbolic link for dhcp
-    _cmd 'ln -s /etc/dhcp /etc/dhcp3'
+    #_cmd 'ln -s /etc/dhcp /etc/dhcp3'
+    _cmd if [[/etc/dhcp3 == null]] ; then ln -s /etc/dhcp /etc/dhcp3 ; fi
 
 # description
 _task "update system"
