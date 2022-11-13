@@ -39,7 +39,7 @@ function _task {
 # _cmd performs commands with error checking
 function _cmd {
     # empty conduro.log
-    > conduro.log
+    > harden.log
     # hide stdout, on error we print and exit
     if eval "$1" 1> /dev/null 2> conduro.log; then
         return 0 # success
@@ -48,10 +48,10 @@ function _cmd {
     printf "${OVERWRITE}${LRED} [X]  ${TASK}${LRED}\n"
     while read line; do 
         printf "      ${line}\n"
-    done < conduro.log
+    done < harden.log
     printf "\n"
     # remove log file
-    rm conduro.log
+    rm harden.log
     # exit installation
     exit 1
 } 
@@ -205,28 +205,27 @@ _task "reload system"
     _cmd 'ufw --force enable'
     _cmd 'service ssh restart'
 
-
-
-# remove conduro.log
-rm conduro.log
-
 # download installer
 _task "download R7 installer"
     if [[ Rapid7Setup-Linux64.bin == null ]] ; then 
         _cmd 'curl -O https://download2.rapid7.com/download/InsightVM/Rapid7Setup-Linux64.bin'; fi
+
 _task "check512sum"
     _cmd 'wget https://download2.rapid7.com/download/InsightVM/Rapid7Setup-Linux64.bin.sha512sum && cat Rapid7Setup-Linux64.bin.sha512sum |  sha512sum --check --status'
+
 _task "executabalize"
     _cmd 'chmod +x Rapid7Setup-Linux64.bin'
     
-_task "file cleanup"
-        if [[ conduro.log != null ]] ; then 
-            _cmd 'rm conduro.log'; fi
+_task "file cleanup"        
         if [[ Rapid7Setup-Linux64.bin.sha512sum != null ]] ; then 
             _cmd 'rm Rapid7Setup-Linux64.bin.sha512sum'; fi
 
 # finish last task
 printf "${OVERWRITE}${LGREEN} [✓]  ${LGREEN}${TASK}\n"
+
+# remove log file
+if [[ harden.log != null ]] ; then 
+   rm harden.log; fi
 
 # reboot
 printf "\n${YELLOW} Do you want to reboot [Y/n]? ${RESTORE}"
