@@ -83,7 +83,7 @@ printf "${RED}
 / /_/ \  ___/|  |   |  | |  |_> >  | \(  <_> >    < \___  |
 \____ |\___  >__|   |__| |   __/|__|   \____/__/\_ \/ ____|
      \/    \/            |__|                     \/\/     
-${LBLACK}Hardening and Setup ${YELLOW}Ubuntu 20.04 ${LBLACK} deftproxy
+${LBLACK}Setup and Hardening ${YELLOW}Ubuntu 20.04 ${LBLACK} deftproxy
  
 "
 
