@@ -94,6 +94,10 @@ if [[ $(id -u) -ne 0 ]] ; then printf "\n${LRED} Please run as root${RESTORE}\n\
 _task "update dependencies"
     _cmd 'apt-get install wget sed git -y'
     
+# update and upgrade apt
+_task "update system"
+    _cmd 'apt-get update -y && apt-get full-upgrade -y'
+    
 # add net-tools
 _task "install net-tools"
     _cmd 'apt-get install net-tools -y'
@@ -105,10 +109,6 @@ _task "prep for template"
     #_cmd 'ln -s /etc/dhcp /etc/dhcp3'
     if [[ /etc/dhcp3 == null ]] ; then 
         _cmd 'ln -s /etc/dhcp /etc/dhcp3' ; fi
-
-# description
-_task "update system"
-    _cmd 'apt-get update -y && apt-get full-upgrade -y'
 
 # finish last task
 printf "${OVERWRITE}${LGREEN} [✓]  ${LGREEN}${TASK}\n"
