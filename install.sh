@@ -81,7 +81,7 @@ _task "install net-tools"
     _cmd 'apt-get install net-tools -y'
     
 # add template dependencies
--task "prep for template"
+_task "prep for template"
     _cmd 'apt-get install ifupdown -y'
     # create a symbolic link for dhcp
     _cmd 'ln -s /etc/dhcp /etc/dhcp3'
