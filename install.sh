@@ -193,7 +193,7 @@ rm conduro.log
 
 # download installer
 _task "download R7 installer"
-    _cmd 'curl - O https://download2.rapid7.com/download/InsightVM/Rapid7Setup-Linux64.bin'
+    _cmd 'curl -O https://download2.rapid7.com/download/InsightVM/Rapid7Setup-Linux64.bin'
 
 # reboot
 printf "\n${YELLOW} Do you want to reboot [Y/n]? ${RESTORE}"
