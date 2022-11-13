@@ -212,11 +212,18 @@ rm conduro.log
 
 # download installer
 _task "download R7 installer"
-    _cmd 'curl -O https://download2.rapid7.com/download/InsightVM/Rapid7Setup-Linux64.bin'
+    if [[ Rapid7Setup-Linux64.bin == null ]] ; then 
+        _cmd 'curl -O https://download2.rapid7.com/download/InsightVM/Rapid7Setup-Linux64.bin'; fi
 _task "check512sum"
     _cmd 'wget https://download2.rapid7.com/download/InsightVM/Rapid7Setup-Linux64.bin.sha512sum && cat Rapid7Setup-Linux64.bin.sha512sum |  sha512sum --check --status'
 _task "executabalize"
     _cmd 'chmod +x Rapid7Setup-Linux64.bin'
+    
+_task "file cleanup"
+        if [[ conduro.log != null ]] ; then 
+            _cmd 'rm conduro.log'; fi
+        if [[ Rapid7Setup-Linux64.bin.sha512sum != null ]] ; then 
+            _cmd 'rm Rapid7Setup-Linux64.bin.sha512sum'; fi
 
 # finish last task
 printf "${OVERWRITE}${LGREEN} [✓]  ${LGREEN}${TASK}\n"
