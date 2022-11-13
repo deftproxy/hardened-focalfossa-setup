@@ -1,23 +1,27 @@
-# Conduro Ubuntu 20.04
-Linux is well-known for being one of the most secure operating systems available. But that doesn't mean you can count on it to be as secure as possible right out of the box. Conduro (_Hardening in Latin_) will automate this process to ensure your platform is secure.
+# Hardening and Setup for Ubuntu 20.04
+This script is intended to automate VMware template creation prep, net-tools install, and hardening for Ubuntu 20.04. This is intended for a freshly installed OS.
 
-> ⚠ We recommend to not execute this script on servers with existing firewall configurations.
+> ⚠ Not recommended to execute this script on servers with existing firewall configurations.
 
 # Getting Started
 This script is designed to be executed on a freshly installed **Ubuntu Server 20.04** server.
 
 ```bash
-sudo wget -O ./install.sh https://github.com/deftproxy/hardened-focalfossa-setup/install.sh && chmod +x ./install.sh && sudo ./install.sh
+sudo wget -O ./install.sh https://github.com/deftproxy/hardened-focalfossa-setup/install.sh && sudo chmod +x ./install.sh && sudo ./install.sh
 ```
-![](https://i.imgur.com/PXK7Ctk.gif)
+
+# CONSIDER GIF HERE
+# ![](https://i.imgur.com/PXK7Ctk.gif)
 
 # What does it do?
-The purpose of Conduro is to optimize and secure your system to run web applications. It does this by disabling unnecessary services, bootstrapping your firewall, secure your system settings and other things. Continue reading if you want to know exactly what's being executed.
+The purpose of this script is to optimize and secure your system to run web applications. It does this by disabling unnecessary services, bootstrapping your firewall, secure your system settings and other things. Continue reading if you want to know exactly what's being executed.
 
 #### update dependencies
 ```bash
 apt-get install wget sed git -y
 ```
+
+# EDIT BELOW HERE
 
 #### update system
 Keeping the system updated is vital before starting anything on your system. This will prevent people to use known vulnerabilities to enter in your system.
