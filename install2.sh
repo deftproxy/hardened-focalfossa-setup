@@ -68,6 +68,18 @@ printf "${YELLOW}
  ${LBLACK}Hardening ${YELLOW}Ubuntu 20.04 ${LBLACK}https://condu.ro
  
 "
+# preint logo + info
+printf "${RED}
+    .___________  _____  __                _______                 
+  __| _/\_____  \/ ____\/  |______________ \   _  \ ___  ______.__.
+ / __ |   _(__  <   __\\   __\____ \_  __ \/  /_\  \\  \/  <   |  |
+/ /_/ |  /       \  |   |  | |  |_> >  | \/\  \_/   \>    < \___  |
+\____ | /______  /__|   |__| |   __/|__|    \_____  /__/\_ \/ ____|
+     \/        \/            |__|                 \/      \/\/    
+
+${LBLACK}Hardening and Setup ${YELLOW}Ubuntu 20.04 ${LBLACK}
+ 
+"
 
 # script must be run as root
 if [[ $(id -u) -ne 0 ]] ; then printf "\n${LRED} Please run as root${RESTORE}\n\n" ; exit 1 ; fi
