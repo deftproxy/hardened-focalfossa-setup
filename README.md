@@ -7,7 +7,7 @@ Linux is well-known for being one of the most secure operating systems available
 This script is designed to be executed on a freshly installed **Ubuntu Server 20.04** server.
 
 ```bash
-wget -O ./install.sh https://github.com/deftproxy/hardened-focalfossa-setup/install.sh && chmod +x ./install.sh && sudo ./install.sh
+sudo wget -O ./install.sh https://github.com/deftproxy/hardened-focalfossa-setup/install.sh && chmod +x ./install.sh && sudo ./install.sh
 ```
 ![](https://i.imgur.com/PXK7Ctk.gif)
 
