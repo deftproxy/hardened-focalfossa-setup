@@ -11,7 +11,6 @@ sudo wget -O ./install.sh https://github.com/deftproxy/hardened-focalfossa-setup
 ```
 
 # CONSIDER GIF HERE
-# ![](https://i.imgur.com/PXK7Ctk.gif)
 
 # What does it do?
 The purpose of this script is to optimize and secure your system to run web applications. It does this by disabling unnecessary services, bootstrapping your firewall, secure your system settings and other things. Continue reading if you want to know exactly what's being executed.
