@@ -38,10 +38,10 @@ function _task {
 
 # _cmd performs commands with error checking
 function _cmd {
-    # empty conduro.log
+    # empty harden.log
     > harden.log
     # hide stdout, on error we print and exit
-    if eval "$1" 1> /dev/null 2> conduro.log; then
+    if eval "$1" 1> /dev/null 2> harden.log; then
         return 0 # success
     fi
     # read error from log and add spacing
