@@ -57,15 +57,6 @@ function _cmd {
 } 
 
 clear
-
-# print logo + information
-#printf "${YELLOW}
-#  ▄▄·        ▐ ▄ ·▄▄▄▄  ▄• ▄▌▄▄▄        
-# ▐█ ▌▪▪     •█▌▐███▪ ██ █▪██▌▀▄ █·▪     
-# ██ ▄▄ ▄█▀▄ ▐█▐▐▌▐█· ▐█▌█▌▐█▌▐▀▀▄  ▄█▀▄ 
-# ▐███▌▐█▌.▐▌██▐█▌██. ██ ▐█▄█▌▐█•█▌▐█▌.▐▌
-# ·▀▀▀  ▀█▄▀▪▀▀ █▪▀▀▀▀▀•  ▀▀▀ .▀  ▀ ▀█▄▀▪
-# ${LBLACK}Hardening ${YELLOW}Ubuntu 20.04 ${LBLACK}https://condu.ro
  
 #"
 # preint logo + info
