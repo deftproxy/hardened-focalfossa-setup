@@ -132,7 +132,7 @@ _task "update ntp servers"
 
 # description
 _task "update sysctl.conf"
-    _cmd 'sudo chmod 744 /etc/sysctl.conf && sudo rm /etc/sysctl.conf'
+    _cmd 'sudo chmod 744 /etc/sysctl.conf && sudo rm /etc/sysctl.conf -f'
     _cmd 'wget --timeout=5 --tries=2 --quiet -c https://raw.githubusercontent.com/deftproxy/hardened-focalfossa-setup/main/sysctl.conf -O /etc/sysctl.conf'
 
 # description
