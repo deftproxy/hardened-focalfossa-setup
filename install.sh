@@ -41,12 +41,9 @@ function _cmd {
     # empty harden.log
     > harden.log
     # hide stdout, on error we print and exit
-##    if eval "$1" 1> /dev/null 2> harden.log; then
-##        return 0 # success
-##    fi
-      if eval "$1"; then
-          return 0
-      fi
+    if eval "$1" 1> /dev/null 2> harden.log; then
+        return 0 # success
+    fi
     # read error from log and add spacing
     printf "${OVERWRITE}${LRED} [X]  ${TASK}${LRED}\n"
     while read line; do 
