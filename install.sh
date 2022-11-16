@@ -128,6 +128,7 @@ _task "update sysctl.conf"
 
 # description
 _task "update sshd_config"
+    _cmd 'sudo chmod 744 /etc/ssh/sshd_config && sudo rm /etc/ssh/sshd_config -f'
     _cmd 'wget --timeout=5 --tries=2 --quiet -c https://raw.githubusercontent.com/deftproxy/hardened-focalfossa-setup/main/sshd.conf -O /etc/ssh/sshd_config'
 
 # Uncomment to disable logging - description
@@ -216,7 +217,9 @@ _task "template prep - clearing unique data"
 # 2. Add the line “After=dbus.service” under [Unit].
 
 _task "configure automatic security updates"
-    _cmd 'sudo dpkg-reconfigure --priority=low unattended-upgrades'
+#    _cmd 'sudo dpkg-reconfigure --priority=low unattended-upgrades'
+    _cmd 'echo unattended-upgrades unattended-upgrades/enable_auto_updates boolean true | debconf-set-selections'
+    _cmd 'dpkg-reconfigure -f noninteractive unattended-upgrades'
 
 # finish last task
 printf "${OVERWRITE}${LGREEN} [✓]  ${LGREEN}${TASK}\n"
