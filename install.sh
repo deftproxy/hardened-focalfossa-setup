@@ -204,14 +204,6 @@ _task "file cleanup"
         if [[ Rapid7Setup-Linux64.bin.sha512sum != null ]] ; then 
             _cmd 'rm Rapid7Setup-Linux64.bin.sha512sum'; fi
 
-# Uncomment to clear data and prepare the system for template conversion
-_task "template prep - clearing unique data"
-    _cmd 'hostnamectl set-hostname localhost'
-    _cmd 'rm /etc/netplan/00-installer-config.yaml'
-    _cmd 'cloud-init clean'
-    _cmd 'rm /var/lib/dbus/machine-id && ln -s /etc/machine-id /var/lib/dbus/machine-id'
-    _cmd 'history -c'
-
 # Also need to address the following if deploy fails
 # 1. Open the /lib/systemd/system/open-vm-tools.service file.
 # 2. Add the line “After=dbus.service” under [Unit].
@@ -220,6 +212,15 @@ _task "configure automatic security updates"
 #    _cmd 'sudo dpkg-reconfigure --priority=low unattended-upgrades'
     _cmd 'echo unattended-upgrades unattended-upgrades/enable_auto_updates boolean true | debconf-set-selections'
     _cmd 'dpkg-reconfigure -f noninteractive unattended-upgrades'
+
+# Uncomment to clear data and prepare the system for template conversion
+_task "template prep - clearing unique data"
+    _cmd 'hostnamectl set-hostname localhost'
+    _cmd 'cloud-init clean'
+    _cmd 'rm /var/lib/dbus/machine-id && ln -s /etc/machine-id /var/lib/dbus/machine-id'
+    _cmd 'history -c'
+    _cmd 'rm /etc/netplan/00-installer-config.yaml'
+    _cmd 'history -c'
 
 # finish last task
 printf "${OVERWRITE}${LGREEN} [✓]  ${LGREEN}${TASK}\n"
