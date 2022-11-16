@@ -205,7 +205,7 @@ _task "file cleanup"
 
 # Uncomment to clear data and prepare the system for template conversion
 _task "template prep - clearing unique data"
-    _cmd 'hostnamectl sethostname localhost'
+    _cmd 'hostnamectl set-hostname localhost'
     _cmd 'rm /etc/netplan/00-installer-config.yaml'
     _cmd 'cloud-init clean'
     _cmd 'rm /var/lib/dbus/machine-id && ln -s /etc/machine-id /var/lib/dbus/machine-id'
