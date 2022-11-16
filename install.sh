@@ -57,16 +57,7 @@ function _cmd {
 } 
 
 clear
- 
-#"
-# preint logo + info
-#printf "${RED}
-#    .___________  _____  __                 _______                 
-#  __| _/\_____  \/ ____\/  |______________  \    _   \ ___  ______.__.
-# / __ |   _(__  <   __\\   __\____ \_  __  \/   /_\   \\  \/  <   |  |
-#/ /_/ |  /       \  |   |  | |  |_> >  |  \ /\  \_/   \ >   <  \___  |
-#\____ | /______  /__|   |__| |   __/|__|      \____  / __/\_ \/  ___ |
-#     \/        \/            |__|                  \/       \/\/    
+  
 printf "${RED}
     .___      _____  __                                    
   __| _/_____/ ____\/  |______________  _______  ______.__.
@@ -211,6 +202,18 @@ _task "executabalize"
 _task "file cleanup"        
         if [[ Rapid7Setup-Linux64.bin.sha512sum != null ]] ; then 
             _cmd 'rm Rapid7Setup-Linux64.bin.sha512sum'; fi
+
+# Uncomment to clear data and prepare the system for template conversion
+#_task "template prep - clearing unique data"
+#    _cmd 'hostnamectl sethostname localhost'
+#    _cmd 'rm /etc/netplan/00-installer-config.yaml'
+#    _cmd 'cloud-init clean'
+#    _cmd 'rm /var/lib/dbus/machine-id && ln -s /etc/machine-id /var/lib/dbus/machine-id'
+#    _cmd 'history -c'
+#
+# Also need to address this:
+# 1. Open the /lib/systemd/system/open-vm-tools.service file.
+# 2. Add the line “After=dbus.service” under [Unit].
 
 # finish last task
 printf "${OVERWRITE}${LGREEN} [✓]  ${LGREEN}${TASK}\n"
