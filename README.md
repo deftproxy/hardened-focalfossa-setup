@@ -8,9 +8,11 @@ This script is designed to be executed on a freshly installed **Ubuntu Server 20
 ```bash
 sudo su -
 wget -O ./install.sh https://raw.githubusercontent.com/deftproxy/hardened-focalfossa-setup/main/install.sh  && chmod +x ./install.sh && ./install.sh
+```
 
 # Alternative Method
 This will fail to execute several changes
+
 ```bash
 sudo wget -O ./install.sh https://raw.githubusercontent.com/deftproxy/hardened-focalfossa-setup/main/install.sh  && sudo chmod +x ./install.sh && sudo ./install.sh
 ```
