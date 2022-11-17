@@ -75,6 +75,12 @@ if [[ $(id -u) -ne 0 ]] ; then printf "\n${LRED} Please run as root${RESTORE}\n\
 # dependencies
 _task "update dependencies"
     _cmd 'apt-get install wget sed git -y'
+
+# create fix folder and info
+_task "create fix directory"
+    _cmd 'mkdir fix'
+    _cmd 'wget --timeout=5 --tries=2 --quiet -c https://raw.githubusercontent.com/deftproxy/hardened-focalfossa-setup/main/fix.txt -O ./fix/fix.txt'
+
     
 # update and upgrade apt
 _task "update system"
