@@ -214,13 +214,13 @@ _task "configure automatic security updates"
     _cmd 'dpkg-reconfigure -f noninteractive unattended-upgrades'
 
 # Uncomment to clear data and prepare the system for template conversion
-#_task "template prep - clearing unique data"
-#    _cmd 'hostnamectl set-hostname localhost'
-#    _cmd 'cloud-init clean'
-#    _cmd 'rm /var/lib/dbus/machine-id && ln -s /etc/machine-id /var/lib/dbus/machine-id'
-#    _cmd 'history -c'
-#    _cmd 'rm /etc/netplan/00-installer-config.yaml'
-#    _cmd 'history -c'
+_task "template prep - clearing unique data"
+    _cmd 'hostnamectl set-hostname localhost'
+    _cmd 'cloud-init clean'
+    _cmd 'rm /var/lib/dbus/machine-id && ln -s /etc/machine-id /var/lib/dbus/machine-id'
+    _cmd 'history -c'
+    _cmd 'rm /etc/netplan/00-installer-config.yaml'
+    _cmd 'history -c'
 
 # finish last task
 printf "${OVERWRITE}${LGREEN} [✓]  ${LGREEN}${TASK}\n"
