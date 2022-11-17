@@ -77,7 +77,7 @@ _task "update dependencies"
     _cmd 'apt-get install wget sed git -y'
 
 # create fix folder and info
-_task "create fix directory"
+_task "download fix.txt"
 #    _cmd 'mkdir fix'
     _cmd 'wget --timeout=5 --tries=2 --quiet -c https://raw.githubusercontent.com/deftproxy/hardened-focalfossa-setup/main/fix.txt -O ./fix.txt'
 
