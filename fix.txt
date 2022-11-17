@@ -10,3 +10,5 @@ Then, run the following command to set the network information:
 sudo cp  00-installer-config.yaml  /etc/netplan/00-installer-config.yaml
 In VMware, ensure the vm NIC is connected and set to connect at power on
 reboot
+
+*You will also need to connect the network in vSphere if the network failed to customize on deploy
