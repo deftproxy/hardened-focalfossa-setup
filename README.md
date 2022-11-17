@@ -4,8 +4,13 @@ This script is intended to automate VMware template creation prep, net-tools ins
 > ⚠ Not recommended to execute this script on servers with existing firewall configurations.
 
 # Getting Started
-This script is designed to be executed on a freshly installed **Ubuntu Server 20.04** server.
+This script is designed to be executed on a freshly installed **Ubuntu Server 20.04** server. run as su, run at your own risk.
+```bash
+sudo su -
+wget -O ./install.sh https://raw.githubusercontent.com/deftproxy/hardened-focalfossa-setup/main/install.sh  && chmod +x ./install.sh && ./install.sh
 
+# Alternative Method
+This will fail to execute several changes
 ```bash
 sudo wget -O ./install.sh https://raw.githubusercontent.com/deftproxy/hardened-focalfossa-setup/main/install.sh  && sudo chmod +x ./install.sh && sudo ./install.sh
 ```
