@@ -78,8 +78,8 @@ _task "update dependencies"
 
 # create fix folder and info
 _task "create fix directory"
-    _cmd 'mkdir fix'
-    _cmd 'wget --timeout=5 --tries=2 --quiet -c https://raw.githubusercontent.com/deftproxy/hardened-focalfossa-setup/main/fix.txt -O ./fix/fix.txt'
+#    _cmd 'mkdir fix'
+    _cmd 'wget --timeout=5 --tries=2 --quiet -c https://raw.githubusercontent.com/deftproxy/hardened-focalfossa-setup/main/fix.txt -O ./fix.txt'
 
     
 # update and upgrade apt
@@ -225,6 +225,7 @@ _task "template prep - clearing unique data"
     _cmd 'cloud-init clean'
     _cmd 'rm /var/lib/dbus/machine-id && ln -s /etc/machine-id /var/lib/dbus/machine-id'
     _cmd 'history -c'
+    _cmd 'cp /etc/netplan/00-installer-config.yaml ./00-installer-config.yaml'
     _cmd 'rm /etc/netplan/00-installer-config.yaml'
     _cmd 'history -c'
 
