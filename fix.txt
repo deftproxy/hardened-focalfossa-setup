@@ -1,7 +1,8 @@
 to fix issue where hostname is set to 'localhost', reboot
+
 to fix issue where there is no IP address, do the following: 
-edit 00.... in this directory, change the ip details to the correct settings, save and close (recommend using nano)
-example command: nano 
+edit 00-installer-config.yaml in this directory, change the ip details to the correct settings, save and close (recommend using nano)
+example command: nano 00-installer-config.yaml
 
 run the following command:
-cp 00.... etc/netplan/
+cp  00-installer-config.yaml  /etc/netplan/00-installer-config.yaml
