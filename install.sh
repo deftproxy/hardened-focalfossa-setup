@@ -124,7 +124,7 @@ printf "${OVERWRITE}${LGREEN} [✓]  ${LGREEN}${TASK}\n"
 _task "update ntp servers"
     _cmd 'truncate -s0 /etc/systemd/timesyncd.conf'
     _cmd 'echo "[Time]" | sudo tee -a /etc/systemd/timesyncd.conf'
-    _cmd 'echo "NTP=time.cloudflare.com" | sudo tee -a /etc/systemd/timesyncd.conf'
+    _cmd 'echo "NTP=us.pool.ntp.org" | sudo tee -a /etc/systemd/timesyncd.conf'
     _cmd 'echo "FallbackNTP=ntp.ubuntu.com" | sudo tee -a /etc/systemd/timesyncd.conf'
 
 # description
@@ -177,7 +177,11 @@ _task "configure firewall"
     _cmd 'sed -i "/GRUB_CMDLINE_LINUX_DEFAULT=/Id" /etc/default/grub'
     _cmd 'echo "GRUB_CMDLINE_LINUX_DEFAULT=\"ipv6.disable=1 quiet splash\"" | sudo tee -a /etc/default/grub'
 
-
+# Sets session timeout to 15 minutes via autologout.sh
+_task "create 15 minute autologout "
+    _cmd 'sudo wget --timeout=5 --tries=2 --quiet -c https://raw.githubusercontent.com/deftproxy/hardened-focalfossa-setup/main/autologout.sh -O /etc/profile.d/autologout.sh'
+    _cmd 'sudo chmod 0755 /etc/profile.d/autologout.sh && sudo source /etc/profile.d/autologout.sh'
+    
 # Uncomment to free disk space - description
 #_task "free disk space"
 #    _cmd 'find /var/log -type f -delete'
