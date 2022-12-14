@@ -180,7 +180,7 @@ _task "configure firewall"
 # Sets session timeout to 15 minutes via autologout.sh
 _task "create 15 minute autologout "
     _cmd 'sudo wget --timeout=5 --tries=2 --quiet -c https://raw.githubusercontent.com/deftproxy/hardened-focalfossa-setup/main/autologout.sh -O /etc/profile.d/autologout.sh'
-    _cmd 'sudo chmod 0755 /etc/profile.d/autologout.sh && sudo source /etc/profile.d/autologout.sh'
+    _cmd 'sudo chmod 0755 /etc/profile.d/autologout.sh'
     
 # Uncomment to free disk space - description
 #_task "free disk space"
